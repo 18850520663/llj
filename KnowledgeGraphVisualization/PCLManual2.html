@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title>数据可视化-问句标注</title>
+		<link rel="stylesheet" href="css/past_index.css" />
+		<!-- <link rel="stylesheet" href="css/QuesCollect.css" /> -->
+		<link rel="stylesheet" type="text/css" href="css/PCLManual2.css" />
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+	</head>
+	<script>
+		function gotoPA() {
+			window.location.href = 'PCLAuto.html';
+		}
+	</script>
+	<body>
+		<!-- <div class="mainbox" style="height: 12.5rem;"> -->
+		<div class="mainbox">
+			<!-- 主面板 -->
+			<div class="light-gray-bg" style="background-color: white;flex:9;">
+				<div class="top-nav">
+					<header class="site-header">
+						<h1>中华文化知识图谱问句采集系统</h1>
+					</header>
+				</div>
+				<div id="1-container">
+					<div class="left" style="width: 25%;height: 900px;margin-top: 2px;">
+						<div class="continue-study" style="width: 80%;height: 60%;border-top: lightgray 1px solid;
+						border-radius: 0rem 0rem 0 0;background-color: white;border: 2px solid white;position: relative;">
+						    <select name="" @change="changeArt('book')" id="book" v-model="currentPage.book">
+									<option v-for="book in books">{{book}}</option>
+								</select>
+								<select name="" @change="changeArt('type_one')" id="type_one"
+									v-model="currentPage.type_one">
+									<!-- <option v-for="type_one in type_one">{{type_one}}</option> -->
+								</select>
+								<select @change="changeArt('type_two')" id="type_two" v-model="currentPage.type_two">
+									<!-- <option v-for="type_two in type_two">{{type_two}}</option> -->
+								</select>
+							<div class="textarea2" id="content2">
+							</div>
+							<button type="button" id="change" value="change" @click="nextArt">下一篇</button>
+						</div>
+					</div>
+
+					<div class="problem_show "
+						style="float: left;width: 25%;height: 900px;margin: 0 10px;text-align: center;">
+						<div class="pshow" style="text-align: center;">
+							<div class="box2">
+								<div>一跳问题</div>
+								<div>问句1：XXX</div>
+								<div>问句2：XXX</div>
+								<div>问句3：XXX</div>
+							</div>
+						</div>
+						<div class="pshow" style="text-align: center;">
+							<div class="box2">
+								<div>二跳问题</div>
+								<div>问句4：XXX</div>
+								<div>问句5：XXX</div>
+								<div>问句6：XXX</div>
+							</div>
+						</div>
+						<div class="pshow" style="text-align: center;">
+							<div class="box2">
+								<div>三跳问题</div>
+								<div>问句7：XXX</div>
+								<div>问句8：XXX</div>
+								<div>问句9：XXX</div>
+							</div>
+						</div>
+						<div class="pshow" style="text-align: center;">
+							<div class="box2">
+								<div>四跳问题</div>
+								<div>问句10：XXX</div>
+								<div>问句11：XXX</div>
+								<div>问句12：XXX</div>
+							</div>
+						</div>
+						<div class="pshow" style="text-align: center;">
+							<div class="box2">
+								<div>五跳问题</div>
+								<div>问句13：XXX</div>
+								<div>问句14：XXX</div>
+								<div>问句15：XXX</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="prediction_infor"
+						style="float: left;width: 40%;height: 900px;margin: 0 40px;<!-- text-align: center; -->">
+						<div id="prediction">
+							<div id="prediction1">
+								<!-- <img class="link" src="img/link.png" alt="" /> -->
+								<label class="p1">预测问题链1
+									<select name="pfirst">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="psecond">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pthird">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfourth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfifth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<input type="button" name="button" id="" value="添加节点" onclick="addNode(0)" />
+									<br />
+								</label>
+
+								<label class="p1">预测问题链2
+									<select name="pfirst">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="psecond">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pthird">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfourth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfifth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<input type="button" name="button" id="" value="添加节点" onclick="addNode(1)" />
+									<br/>
+								</label>
+
+								<label class="p1">预测问题链3
+									<select name="pfirst">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="psecond">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pthird">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfourth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfifth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<input type="button" name="button" id="" value="添加节点" onclick="addNode(2)" />
+									<br/>
+								</label>
+
+								<label class="p1">预测问题链4
+									<select name="pfirst">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="psecond">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pthird">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfourth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfifth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<input type="button" name="button" id="" value="添加节点" onclick="addNode(3)" />
+									<br/>
+								</label>
+
+								<label class="p1">预测问题链5
+									<select name="pfirst">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="psecond">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pthird">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfourth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfifth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<input type="button" name="button" id="" value="添加节点" onclick="addNode(4)" />
+									<br/>
+								</label>
+
+								<label class="p1">预测问题链6
+									<select name="pfirst">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="psecond">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pthird">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="" />
+									<select name="pfourth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<img class="link" :src="linkSrc" alt="图片加载失败" />
+									<select name="pfifth">
+										<option value="1"> 1</option>
+										<option value="2"> 2</option>
+										<option value="3"> 3</option>
+										<option value="4"> 4</option>
+										<option value="5"> 5</option>
+									</select>
+									<input type="button" name="button" id="" value="添加节点" onclick="addNode(5)" />
+									<br/>
+								</label>
+							</div>
+							<div class="add">
+								<input type="button" name="add" id="add" onclick="addLink()" value="添加链接" />
+								<input type="button" name="add" id="add" onclick="reduceLink()" value="减少链接" />
+							</div>
+							<div class="submit">
+								<input type="button" onclick="gotoPA()" name="submit" id="submit" value="提交" />
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/flexible.js"></script>
+		<script src="js/axios.min.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/vue.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+		<script src="https://dl.ifanr.cn/hydrogen/sdk/sdk-web-latest.js"></script>
+		<script src="js/PCLManual.js"></script>
+	</body>
+</html>

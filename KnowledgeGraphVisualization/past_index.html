@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="Access-Control-Allow-Origin" content="http://106.52.142.195:7474">
+		<title>数据可视化</title>
+		<link rel="stylesheet" href="css/past_index.css" />
+		<link rel="stylesheet" href="css/robot.css" />
+		<script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+	</head>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/flexible.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/echarts.min.js"></script>
+	<script src="js/kgDraw.js"></script>
+	<script type="text/javascript" src="js/tagcloud.js"></script>
+	<!-- <script src="js/axios.min.js"></script> -->
+	<script>
+		var kg0 = 'js/mock2.json';
+		function tab(pid){
+	 var tabs=["tab1","tab2","tab3"];
+	 for(var i=0;i<3;i++){
+	 if(tabs[i]==pid){
+	 document.getElementById(tabs[i]).style.display="block";
+	 }else{
+	 document.getElementById(tabs[i]).style.display="none";
+	 }
+	 }
+	 };
+	 function swithStyle(){
+		document.getElementById("visualization").setAttribute("class","visualization_1");
+		
+		document.getElementById("tabNav").style.display="none";
+		
+		document.getElementById("robot").style.display="none";
+		document.getElementById("tab2").style.display="block";
+		document.getElementById("tab3").style.display="block";
+		
+		document.getElementById("tab1").setAttribute("class","tab1_1");
+		document.getElementById("tab2").setAttribute("class","tab2_1");
+		document.getElementById("tab3").setAttribute("class","tab3_1");
+		
+	 };
+	 
+	 function tagSearch(btnVal){
+		kg1Draw(btnVal);
+		kg2Draw(btnVal);
+		kg3Draw(btnVal);
+		
+	 }
+		
+	 </script>
+	<body>
+		<div class="mainbox">
+			<!-- 侧边栏 -->
+			<div class="sidebar" style="flex:1;">
+				<div class="userInfor">
+					<img src="img/logo.png" alt="Profile Photo" class="img-icon">
+				</div>
+				<nav class="left-nav">
+					<ul>
+						<li><a href="past_index.html" class="active"><i class="fa fa-home fa-fw"></i>首页</a></li>
+						<li><a href="login.html"><i class="fa fa-eject fa-fw"></i>登录</a></li>
+						<li><a href="QuestionMark2.html"><i class="fa fa-users fa-fw"></i>问句标注</a></li>
+						<li><a href="PCLManual2.html"><i class="fa fa-users fa-fw"></i>问题链标注（人工）</a></li>
+						<li><a href="PCLAuto2.html"><i class="fa fa-users fa-fw"></i>问题链标注（自动）</a></li>
+						<!-- <li><a href="QuesCollect.html"><i class="fa fa-users fa-fw"></i>问句采集</a></li>
+						<li><a href="manage-users.html"><i class="fa fa-users fa-fw"></i>使用说明</a></li>
+						<li><a href="preferences.html"><i class="fa fa-sliders fa-fw"></i>联系我们</a></li>
+						<li><a href="login.html"><i class="fa fa-eject fa-fw"></i>登出</a></li> -->
+					</ul>
+				</nav>
+
+			</div>
+			<!-- 主面板 -->
+			<div class="light-gray-bg" style="background-color: lightgray;flex:9;">
+				<div class="top-nav">
+					<header class="site-header">
+						<h1>中华文化知识图谱问句采集系统</h1>
+					</header>
+				</div>
+				<div class="content-container">
+					<div class="mainpanel" style="flex:7;">
+						<div id="visualization" class="visualization">
+							<h2>部分民族关联主体示意图</h2>
+							<div id="tabNav">
+								<ul class="graph_button_group">
+									<li onclick="tab('tab2')">柱状图</li>
+									<li onclick="tab('tab3')">饼状图</li>
+									<li onclick="swithStyle()">全屏展示</li>
+								</ul>
+							</div>
+							<div id="tab">
+								<div id="tab1" class="tab1" style="display: block;"></div>
+								<div id="tab2" class="tab2" style="display: none;"></div>
+								<div id="tab3" class="tab3" style="display: none;"></div>
+							</div>
+						</div>
+						<div id="robot" style="display: block;">
+							<div id="box">
+								<div class="b-head">
+									<img class="h-img" alt="" src="img/logo.png" width=80; height=60; />
+									<span class="h_span">中华文化问答Bot</span>
+								</div>
+								<div class="b-body">
+									<div class="rotWord">
+										<span></span>
+										<p>嗨~你可以问我问题。<br>如：“共工是谁？”</p>
+									</div>
+								</div>
+								<!-- 					<div class="b-footer">
+									<input type="text" id="f-left" v-model="sWord" @keyup.enter="searchGraph" />
+									<button id="btn" @click="searchGraph">发送</button>
+								</div> -->
+								<div class="b-footer">
+									<input type="text" name="text" id="f-left" />
+									<div id="btn">发送</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="cloumn" style="flex:3;">
+						<div class="miniIntro">
+							<div class="r-head">
+								<span class="cloumn_h">简介</span>
+							</div>
+							<div class="content">
+								<div class="pad group">
+									<div class="entry" style="margin: 0.2rem;">
+										<ul>
+											<li style="font-size: 0.375rem;" id="introName">共工</li>
+											<li>&nbsp;&nbsp;&nbsp;&nbsp;所属篇名:民族篇</li>
+											<li>&nbsp;&nbsp;&nbsp;&nbsp;所属小节:华夏族</li>
+
+											<li>
+												<p><strong>所属文本</strong></p>
+												<p> &nbsp;&nbsp;据说共工氏姓姜，是炎帝的后代。共工氏是神农氏之后，又
+												是一个为发展农业生产做出过重要贡献的人。他发明了筑堤蓄水的办法。关于他
+												的传说，几乎全与水有关，最有名的故事是：共工怒触不周山。</p>
+											</li>
+											
+											<hr class="wp-block-separator">
+											<li>
+												<p><strong>扩展文本</strong></p>
+												<p> &nbsp;&nbsp;黄河的经常泛滥威胁到了部落的生存，共工率领大家与洪水
+												英勇搏斗，他们采取“堵”而不是“疏”的办法来治水，未能根治洪水，但是为后人
+												治水积累了经验。共工是华夏的治水英雄，被后世尊为水神。共工治水表现出来
+												的永不言败的精神，是中华民族宝贵的精神财富。</p>
+											</li>
+										</ul>
+                                        
+									</div>
+									<!--/.pad-->
+								</div>
+							</div>
+						</div>
+						<div class="searchBox">
+							<div class="r-head">
+								<span class="cloumn_h">搜索历史</span>
+							</div>
+							<div class="tagcloud">
+								<input type="button" value="麒麟" onclick="tagSearch(value)" />
+								<input type="button" value="壮族人" onclick="tagSearch(value)" />
+								<input type="button" value="诗经" onclick="tagSearch(value)" />
+								<input type="button" value="客家土楼" onclick="tagSearch(value)" />
+								<input type="button" value="客家方言" onclick="tagSearch(value)" />
+								<input type="button" value="九章算术" onclick="tagSearch(value)" />
+								<input type="button" value="诗经" onclick="tagSearch(value)" />
+								<input type="button" value="范仲淹" onclick="tagSearch(value)" />
+								<input type="button" value="关汉卿" onclick="tagSearch(value)" />
+								<input type="button" value="木偶戏" onclick="tagSearch(value)" />
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+
+		<script src="js/bot.js"></script>
+		<script src="js/visualization.js"></script>
+		<script type="text/javascript">
+			/*3D标签云*/
+			tagcloud({
+				selector: ".tagcloud", //元素选择器
+				fontsize: 8, //基本字体大小, 单位px
+				radius: 50, //滚动半径, 单位px
+				mspeed: "normal", //滚动最大速度, 取值: slow, normal(默认), fast
+				ispeed: "normal", //滚动初速度, 取值: slow, normal(默认), fast
+				direction: 135, //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+				keep: false //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
+			});
+		</script>
+
+
+	</body>
+
+</html>

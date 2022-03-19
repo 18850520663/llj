@@ -1,0 +1,46 @@
+            .top{
+				width: 100%;
+				height: 58px;
+				background: #F9F9F9;
+			}
+			.top2{
+				height: 100%;
+				width: 1200px;
+				/*设置水平居中*/
+				margin:0px auto;
+			}
+			li{
+				
+				list-style: none;
+			}
+			.top2 li{
+				float:left;
+				line-height: 58px;
+			}
+			.top2 a{
+				color:white;
+				color:#4A4A4A;
+				text-decoration:none;
+				font_size:16px;
+			}
+			.top2 span{
+				color:#F9F9F9;
+			    margin-left:16px;
+			    margin-right:16px;
+			}
+			.top2 a:hover{
+				color:#FFFFFF;
+			}
+			
+#icp_record_certificate {
+	/* border: green solid 0.05rem; */
+	color: #D3D3D3;
+	font-size: 10px;
+	position: absolute;
+	top: 95%;
+	right: 37.5%;
+}
+
+.middle{
+	width: 100%;
+}

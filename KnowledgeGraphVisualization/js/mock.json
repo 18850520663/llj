@@ -1,0 +1,94 @@
+{
+	"res": {
+		"nodes": [
+		  {
+			"id": "0",
+			"name": "壮族人",
+			"symbolSize": 100,
+			"category": 0
+		  },
+		  {
+			"id": "1",
+			"name": "巨石",
+			"symbolSize": 10,
+			"category": 1
+		  },
+		  {
+			"id": "2",
+			"name": "老树",
+			"symbolSize": 10,
+			"category": 1
+		  },
+		  {
+			"id": "3",
+			"name": "高山",
+			"symbolSize": 10,
+			"category": 1
+		  },
+		  {
+			"id": "4",
+			"name": "土地",
+			"symbolSize": 10,
+			"category": 1
+		  },
+		  {
+			"id": "5",
+			"name": "龙蛇",
+			"symbolSize": 10,
+			"category":1
+		  },
+		  {
+			"id": "6",
+			"name": "祖先",
+			"symbolSize":30,
+			"category": 1
+		  }
+
+
+		],
+
+		"links": [
+		  {
+			"name":"崇拜",
+			"source": "0",
+			"target": "1"
+			
+		  },
+		  {
+			"name":"崇拜",
+			"source": "0",
+			"target": "2"
+		  },
+		  {
+			"name":"崇拜",
+			"source": "0",
+			"target": "3"
+		  },
+		  {
+			"name":"崇拜",
+			"source": "0",
+			"target": "4"
+		  },
+		  {
+			"name":"崇拜",
+			"source": "0",
+			"target": "5"
+		  },
+		  {
+			"name":"崇拜",
+			"source": "0",
+			"target": "6"
+		  }
+
+		],
+		"categories": [
+		  {
+			"name":""
+		  },
+		  {
+			"name": "崇拜"
+		  }
+
+		]
+	}
+  }

@@ -1,0 +1,269 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+	box-sizing: border-box;
+
+}
+
+body {
+	background: #1f2124;
+	font-size: 0.1625rem;
+	color: #333;
+	line-height: 1.15;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+
+.mainbox {
+	position: relative;
+	display: flex;
+	min-width: 500px;
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 0.125rem 0.125rem 0;
+}
+
+.mainbox .panel {
+	height: 3.875rem;
+	background-color: cadetblue;
+}
+
+.mainpanel {
+	padding: 0.125rem;
+	height: 8rem;
+
+}
+
+.site-header {
+	margin: 0.1875rem;
+}
+
+header h1 {
+	font-size: 0.475rem;
+	color: black;
+	text-align: center;
+}
+
+.img-icon {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+nav li {
+	font-size: 0.25rem;
+	text-transform: uppercase;
+	margin: 0.5rem 0;
+
+}
+
+.left-nav {
+	display: block !important;
+	background: #1f2124;
+}
+
+.left-nav a {
+	color: #e9e9ea;
+	display: block;
+	
+	padding: 0.375rem;
+	transition: all 0.3s ease;
+	text-decoration: none;
+}
+
+.left-nav a.active,
+left-nav a:hover {
+	border-left: 6px solid #13895F;
+}
+
+.userInfor {
+	position: relative;
+	color: aliceblue;
+	font-size: 0.25rem;
+	text-align: center;
+}
+
+.top-nav {
+	background-color: white;
+	padding: 0.2125rem 0.375rem;
+	box-shadow: 0px 0px 0.025rem 0.025rem rgb(161 159 159 / 18%);
+}
+
+.content-container {
+	display: flex;
+	min-width: 500px;
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 0.125rem 0.125rem 0;
+}
+
+.visualization,
+#robot {
+	height: 8rem;
+	border-radius: 10px;
+	padding: 0.375rem;
+	position: relative;
+	margin: 0.125rem;
+	box-shadow: 0px 0px 1px 1px rgb(161 159 159 / 10%);
+	background-color: white;
+}
+.visualization_1{
+	height: 16rem;
+	border-radius: 10px;
+	padding: 0.375rem;
+	position: relative;
+	margin: 0.125rem;
+	box-shadow: 0px 0px 1px 1px rgb(161 159 159 / 10%);
+	background-color: white;
+}
+#tabNav{
+	width: 2rem;
+	position: absolute;
+	top:30%;
+	left:1rem;
+}
+.graph_button_group{
+	list-style-type:none;
+}
+.graph_button_group li{
+	-webkit-border-radius:5px;
+	margin: 0.25rem;
+	padding: 0.25rem;
+	color: white;
+	border-color: transparent;
+	background: #66BB6A;
+	box-shadow: none;
+	font-size: 0.25rem;
+	text-align: center;
+	
+}
+.graph_button_group li:hover{
+	border-color: #26C6DA;
+	background: linear-gradient(to bottom, #80DEEA 0%, #4DD0E1 100%);
+	box-shadow: inset 0 1px #e0f7fa, 0 2px 3px rgb(0 0 0 / 20%);
+
+}
+.graph_button_group li:active{
+	border-color: #0097A7;
+	color: #B2EBF2;
+	background: linear-gradient(to bottom, #26C6DA 0%, #00ACC1 100%);
+	box-shadow: inset 0 2px 2px #0097a7;
+}
+.btn_graph-disabled{
+	color: black;
+	background: #A5D6A7;
+	border-color: #A5D6A7;
+}
+.tab1,.tab2,.tab3{
+	width:10.5rem;
+	height: 7.5rem;
+	position: absolute;
+	top:center;
+	right:0.8rem;
+}
+.tab1_1{
+	width:12rem;
+	height: 7.5rem;
+	position: absolute;
+	bottom: 3%;
+}
+.tab2_1,.tab3_1{
+	width:6.7rem;
+	height: 7.5rem;
+	float:left;
+}
+
+.miniIntro,
+.searchBox {
+	height: 10rem;
+	border-radius: 0.125rem;
+	padding: 0;
+	position: relative;
+	margin: 0.125rem;
+	box-shadow: 0px 0px 1px 1px rgb(161 159 159 / 10%);
+	background-color: white;
+}
+
+.searchBox {
+	height: 6rem;
+}
+
+.r-head {
+	width: 100%;
+	height: 0.8rem;
+	padding: 0.125rem;
+	border-radius: 0.125rem 0.125rem 0 0;
+	background-color: #666666;
+}
+
+.cloumn_h {
+	color: #fff;
+	font-size: 0.375rem;
+	float: left;
+	user-select: none;
+	cursor: default;
+}
+
+.tagcloud {
+	width: 100%;
+	height: 5rem;
+	bottom: 0rem;
+	padding: 0;
+}
+
+.tagcloud input {
+	padding: 0.1rem 0.125rem;
+	color: #333;
+	font-size: 16px;
+	border: 1px solid #e6e7e8;
+	border-radius: 18px;
+	background-color: #f2f4f8;
+	text-decoration: none;
+	white-space: nowrap;
+	-o-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+	-ms-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+	-moz-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+	-webkit-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+	box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')";
+	/*兼容ie7/8*/
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=125, Strength=9);
+	/*strength是阴影大小，direction是阴影方位，单位为度，可以为负数，color是阴影颜色 （尽量使用数字）使用IE滤镜实现盒子阴影的盒子必须是行元素或以行元素显示（block或inline-block;）*/
+}
+
+.tagcloud a:hover {
+	color: #3385cf;
+}
+.entry ul{
+	list-style-type: none;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.28rem;
+	float: left;
+	line-height: 0.7rem;
+}
+.entry p {
+	width: auto;
+	margin-top: 0.25rem;
+	float: left;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.24rem;
+	color: black;
+	line-height: 0.3125rem;
+	letter-spacing: 0.0125rem;
+}

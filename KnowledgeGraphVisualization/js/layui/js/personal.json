@@ -1,0 +1,10 @@
+{
+	"code":0,
+	"msg":"",
+	"count":50,
+	"data":[{
+		"id":1000,
+		"username":"user-0",
+		"sex":"女"
+	}]
+}

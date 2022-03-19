@@ -1,0 +1,99 @@
+            .top{
+				width: 100%;
+				height: 58px;
+				background: #F9F9F9;
+			}
+			.top2{
+				height: 100%;
+				width: 1200px;
+				/*设置水平居中*/
+				margin:0px auto;
+			}
+			li{
+				
+				list-style: none;
+			}
+			.top2 li{
+				float:left;
+				line-height: 58px;
+			}
+			.top2 a{
+				color:white;
+				color:#4A4A4A;
+				text-decoration:none;
+				font_size:16px;
+			}
+			.top2 span{
+				color:#F9F9F9;
+			    margin-left:16px;
+			    margin-right:16px;
+			}
+			.top2 a:hover{
+				color:#FFFFFF;
+			}
+			.div1{
+				width: 100%;
+				height:300px;
+                background-image: url(https://oimagea2.ydstatic.com/image?id=-6714341758356743337&product=xue&format=JPEG);
+                background-position: center;
+                background-image: initial;
+			    animation:15s lbt infinite;
+			    display: block;
+			}
+			.middle{
+				width: 100%;
+				height: 50px;
+			}
+			.middle span{
+				color:#F9F9F9;
+			    margin-left:32px;
+			    margin-right:32px;
+			}
+			.buttom{
+				height: 350px;
+				width: 100%;
+			}
+			.buttom1{
+				height: 350px;
+				width: 33%;
+				float:left;
+				/*图片居中*/
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+				
+			}
+			.buttom2{
+				height: 350px;
+				width: 33%;
+				float: left;
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+			}
+			.buttom3{
+				height: 350px;
+				width: 34%;
+				float: right;
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+			}
+
+@keyframes lbt{
+	0%{background-image: url(https://oimagea2.ydstatic.com/image?id=-6714341758356743337&product=xue&format=JPEG);}
+	50%{background-image:url(https://oimageb8.ydstatic.com/image?id=-7001608465364322605&product=xue&format=JPEG);}
+	100%{background-image: url(https://oimagea2.ydstatic.com/image?id=-6714341758356743337&product=xue&format=JPEG);}
+
+}
+#icp_record_certificate {
+	/* border: green solid 0.05rem; */
+	color: #D3D3D3;
+	font-size: 10px;
+	position: absolute;
+	top: 95%;
+	right: 37.5%;
+}
+
+
+

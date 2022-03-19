@@ -1,0 +1,130 @@
+<!--<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>--><!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title>数据可视化-问句标注</title>
+		<link rel="stylesheet" href="css/past_index.css" />
+		<!-- <link rel="stylesheet" href="css/QuesCollect.css" /> -->
+		<link rel="stylesheet" type="text/css" href="css/PCLAuto2.css"/>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+	</head>
+	<script src="js/flexible.js"></script>
+
+	<body>
+		<!-- <div class="mainbox" style="height: 12.5rem;"> -->
+			<div class="top">
+		     <div class="top2">
+				<ul>
+					<li><a href="shouye.html">首页官网</a><span>|</span></li>
+					<li><a href="introduce.html">关于我们</a><span>|</span></li>
+					<li><a href="">个人中心</a><span>|</span></li>
+					<li><a href="index.html">登录</a><span>|</span></li>
+					<li><a href="login">注册</a></li>
+				</ul>
+		    </div>	
+		</div>
+		<div class="mainbox" >
+			<!-- 主面板 -->
+			<div class="light-gray-bg" style="background-color: white;flex:9;">
+				<div class="top-nav">
+					<header class="site-header">
+						<h1>中华文化知识图谱问句采集系统</h1>
+					</header>
+				</div>
+				<div id="1-container">
+					<div class="left" style="width: 25%;height: 900px;margin-top: 2px;">
+						<div class="continue-study" style="width: 80%;height: 60%;border-top: lightgray 1px solid;
+						border-radius: 0rem 0rem 0 0;background-color: white;border: 2px solid white;position: relative;">
+							<div class="textarea3">
+								<div class="1-text" v-show="isShow" style="width: 100%;height: 10%;color: black;
+								text-align: center;position: absolute;top: 40%;font-size: 12px;">
+									课文
+								</div>
+								<div class="2-text" v-show="isShow" style="width: 100%;height: 10%;color: black;
+								text-align: center;position: absolute;top: 55%;font-size: 12px;">
+									一句话/一段话
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 预测问题链模块 -->
+					<div class="prediction_auto " style="float: left;width: 50%;height: 900px;margin: 0 10px;text-align: center;">
+						<div id="p_title" >
+							<label>预测问题链ID
+								<select name="ID_name">
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+							</label>
+						</div>
+						<div id="p_auto">
+							<div class="p1">
+								<select name="">
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+							</div>
+							<img src="img/link_down.png" alt="图片加载失败" >
+							<div class="p1">
+								<select name="">
+									<option value="1">2</option>
+									<option value="2">2</option>
+								</select>
+								
+							</div>
+							<img src="img/link_down.png" alt="图片加载失败" >
+							<div class="p1">
+								<select name="">
+									<option value="1">3</option>
+									<option value="2">2</option>
+								</select>
+								
+							</div>
+							<img src="img/link_down.png" alt="图片加载失败" >
+							<div class="p1">
+								<select name="">
+									<option value="1">4</option>
+									<option value="2">2</option>
+								</select>
+							</div>
+							
+						</div>
+						<img class="previous" src="img/previous.png" alt="图标加载失败"/>
+						<img class="next" src="img/next.png" alt="图标加载失败" />
+						<div id="chose">
+							<div class="radio">
+								<input type="radio" name="reasonable" id="" value="reasonable" />
+								<label>
+									合理
+								</label>
+							</div>
+							<div class="radio">
+								<input type="radio" name="unreasonable " id="" value="unreasonable" />
+								<label>
+									不合理
+								</label>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+		<script src="https://dl.ifanr.cn/hydrogen/sdk/sdk-web-latest.js"></script>
+
+	</body>
+
+</html>
+

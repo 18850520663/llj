@@ -1,0 +1,123 @@
+{
+    "nodes": [
+      {
+        "id": "0",
+        "name": "司马光",
+        "symbolSize": 80,
+        "category": 0
+      },
+      {
+        "id": "1",
+        "name": "历史巨著",
+        "symbolSize": 30,
+        "category": 1
+      },
+      {
+        "id": "2",
+        "name": "心血",
+        "symbolSize": 30,
+        "category": 2
+      },
+      {
+        "id": "3",
+        "name": "编写人员",
+        "symbolSize": 30,
+        "category": 3
+      },
+      {
+        "id": "4",
+        "name": "史书",
+        "symbolSize": 30,
+        "category": 4
+      },
+      {
+        "id": "5",
+        "name": "历史",
+        "symbolSize": 30,
+        "category":6
+      },
+      {
+        "id": "6",
+        "name": "《资治通鉴》",
+        "symbolSize":30,
+        "category": 7
+      }
+
+
+    ],
+
+    "links": [
+      {
+		"name":"完成",
+        "source": "0",
+        "target": "1"
+		
+      },
+      {
+		"name":"花费",
+        "source": "0",
+        "target": "2"
+      },
+      {
+		"name":"挑选",
+        "source": "0",
+        "target": "3"
+      },
+      {
+		"name":"写成",
+        "source": "0",
+        "target": "4"
+      },
+      {
+		"name":"了解",
+        "source": "0",
+        "target": "5"
+      },
+      {
+		"name":"重视",
+        "source": "0",
+        "target": "5"
+      },
+	  {
+	  	"name":"编写",
+	    "source": "0",
+	    "target": "6"
+	  },
+	  {
+	  	"name":"主持",
+	    "source": "0",
+	    "target": "6"
+	  }
+
+    ],
+    "categories": [
+		{
+		  "name":"司马光"
+		},
+      {
+        "name":"完成"
+      },
+      {
+        "name": "花费"
+      },
+	  {
+	    "name":"挑选"
+	  },
+	  {
+	    "name":"写成"
+	  },
+	  {
+	    "name":"了解"
+	  },
+	  {
+	    "name":"重视"
+	  },
+	  {
+	    "name":"编写"
+	  },
+	  {
+	    "name":"主持"
+	  }
+
+    ]
+  }

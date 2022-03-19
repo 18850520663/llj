@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title>数据可视化-问句标注2</title>
+		<link rel="stylesheet" href="css/past_index.css" />
+		<link rel="stylesheet" type="text/css" href="css/QuestionMark2.css" />
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+		<!-- <script src="js/kgDraw.js"></script> -->
+		<!--<script type="text/javascript" src="js/tagcloud.js"></script> -->
+		<script>
+			function gotoPM() {
+				window.location.href = 'PCLManual.html';
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="top">
+		<div class="top2">
+				<ul>
+					<li><a href="shouye.html">首页官网</a><span>|</span></li>
+					<li><a href="introduce.html">关于我们</a><span>|</span></li>
+					<li><a href="">个人中心</a><span>|</span></li>
+					<li><a href="index.html">登录</a><span>|</span></li>
+					<li><a href="login">注册</a></li>
+				</ul>
+		</div>	
+		</div>
+		<div class="mainbox">
+			<!-- 主面板 -->
+			<div class="light-gray-bg" style="background-color:white;flex:9;">
+				<div class="top-nav">
+					<div class="site-header">
+						<h1 align="center">中华文化知识图谱问句采集系统</h1>
+					</div>
+				</div>
+				<!--左边栏-->
+				<div id="1-container">
+					<!-- <div class="left" style="width:5.5rem;"> -->
+					<div class="left" style="width: 25%;height: 1200px;margin-top: 2px;">
+						<div class="continue-study" style="width: 80%;height: 85%;border-top: lightgray 1px solid;
+						border-radius: 0rem 0rem 0 0;background-color: white;border: 2px solid white;position: relative;">
+							<!-- <textarea id="textarea" @click="change"></textarea> -->
+							<!-- <div id="textarea" @click="change" >{{text}}</div> -->
+							<div class="title">
+								<select name="" @change="changeArt('book')" id="book" v-model="currentPage.book">
+									<option v-for="book in books">{{book}}</option>
+								</select>
+								<select name="" @change="changeArt('type_one')" id="type_one"
+									v-model="currentPage.type_one">
+									<!-- <option v-for="type_one in type_one">{{type_one}}</option> -->
+								</select>
+								<select @change="changeArt('type_two')" id="type_two" v-model="currentPage.type_two">
+									<!-- <option v-for="type_two in type_two">{{type_two}}</option> -->
+								</select>
+							</div>
+							<div id="textarea" @mouseenter="change"></div>
+							<!-- <div class="1-text" v-show="isShow" style="width: 100%;height: 10%;color: black;
+							text-align: center;position: absolute;top: 40%;font-size: 12px;">
+								课文
+							</div>
+							<div class="2-text" v-show="isShow" style="width: 100%;height: 10%;color: black;
+							text-align: center;position: absolute;top: 55%;font-size: 12px;">
+								一句话/一段话
+							</div> -->
+							<button type="button" id="change" value="change" @click="nextArt">下一篇</button>
+						</div>
+					</div>
+<!--中间栏-->
+					<div class="jump_problem "
+						style="float: left;width: 30%;height: 1200px;margin: 0 10px;text-align: center;">
+						<div class="xuanze" style="text-align: center;">
+							<form action="">
+								<select name="cars" id="selector1" @change="change(0)"></select>
+							</form>
+							<img class="previous" @click="prev(0)" :src="prevSrc" alt="图标加载失败" />
+							<img class="next" @click="next(0)" :src="nextSrc" alt="图标加载失败" />
+							<div class="box1" id="box1"></div>
+						</div>
+						<div class="xuanze" style="text-align: center;">
+							<form action="">
+								<select name="cars" id="selector2" @change="change(1)"></select>
+							</form>
+							<img class="previous" @click="prev(1)" :src="prevSrc" alt="图标加载失败" />
+							<img class="next" @click="next(1)" :src="nextSrc" alt="图标加载失败" />
+							<div class="box1" id="box2"></div>
+
+						</div>
+						<div class="xuanze" style="text-align: center;">
+							<form action="">
+								<select name="cars" id="selector3" @change="change(2)"></select>
+							</form>
+							<img class="previous" @click="prev(2)" :src="prevSrc" alt="图标加载失败" />
+							<img class="next" @click="next(2)" :src="nextSrc" alt="图标加载失败" />
+							<div class="box1" id="box3"></div>
+
+						</div>
+						<div class="xuanze" style="text-align: center;">
+							<form action="">
+								<select name="cars" id="selector4" @change="change(3)"></select>
+							</form>
+							<img class="previous" @click="prev(3)" :src="prevSrc" alt="图标加载失败" />
+							<img class="next" @click="next(3)" :src="nextSrc" alt="图标加载失败" />
+							<div class="box1" id="box4"></div>
+						</div>
+						<div class="xuanze" style="text-align: center;">
+							<form action="">
+								<select name="cars" id="selector5" @change="change(4)">
+									<!-- <option>A</option> -->
+								</select>
+							</form>
+							<img class="previous" @click="prev(4)" :src="prevSrc" alt="图标加载失败" />
+							<img class="next" @click="next(4)" :src="nextSrc" alt="图标加载失败" />
+							<div class="box1" id="box5"></div>
+						</div>
+
+					</div>
+<!--右边栏-->
+					<div id="prompt_infor" style="float: left;height: 1200px;margin: 0 40px;">
+						<div class="infor">
+							<label @mouseover="enter(0)" @mouseleave="leave(0)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">是何类型</label>
+							<label @mouseover="enter(1)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">为何类型</label>
+							<label @mouseover="enter(2)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">若何类型</label>
+							<label @mouseover="enter(3)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">由何类型</label>
+							<label @mouseover="enter(4)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">如何类型</label>
+						</div>
+						<div class="infor">
+							<label @mouseover="enter(5)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">是何类型</label>
+							<label @mouseover="enter(6)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">为何类型</label>
+							<label @mouseover="enter(7)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">若何类型</label>
+							<label @mouseover="enter(8)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">由何类型</label>
+							<label @mouseover="enter(9)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">如何类型</label>
+						</div>
+						<div class="infor">
+							<label @mouseover="enter(10)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">是何类型</label>
+							<label @mouseover="enter(11)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">为何类型</label>
+							<label @mouseover="enter(12)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">若何类型</label>
+							<label @mouseover="enter(13)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">由何类型</label>
+							<label @mouseover="enter(14)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">如何类型</label>
+						</div>
+						<div class="infor">
+							<label @mouseover="enter(15)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">是何类型</label>
+							<label @mouseover="enter(16)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">为何类型</label>
+							<label @mouseover="enter(17)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">若何类型</label>
+							<label @mouseover="enter(18)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">由何类型</label>
+							<label @mouseover="enter(19)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">如何类型</label>
+						</div>
+						<div class="infor">
+							<label @mouseover="enter(20)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">是何类型</label>
+							<label @mouseover="enter(21)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">为何类型</label>
+							<label @mouseover="enter(22)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">若何类型</label>
+							<label @mouseover="enter(23)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">由何类型</label>
+							<label @mouseover="enter(24)">
+								<img class="prompt" src="img/prompt.png" alt="图片加载失败">如何类型</label>
+						</div>
+					</div>
+
+					<div id="input_show" style="float: left;width: 25%;height: 1200px;">
+						<!-- 1 -->
+						<div class="write_questions" v-show="inputShow[0].key" @mouseover="enter(0)"
+							@mouseleave="leave(0)">
+							<div class="question_border">
+								<div class="w_q">
+									一跳问题1 是何类型问题
+								</div>
+								<label>问句
+									<textarea v-model="str1" rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[1].key" @mouseover="enter(1)"
+							@mouseleave="leave(1)">
+							<div class="question_border">
+								<div class="w_q">
+									一跳问题1 为何类型问题
+								</div>
+								<label>问句
+									<textarea v-model="str2" rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[2].key" @mouseover="enter(2)"
+							@mouseleave="leave(2)">
+							<div class="question_border">
+								<div class="w_q">
+									一跳问题1 若何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[3].key" @mouseover="enter(3)"
+							@mouseleave="leave(3)">
+							<div class="question_border">
+								<div class="w_q">
+									一跳问题1 由何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[4].key" @mouseover="enter(4)"
+							@mouseleave="leave(4)">
+							<div class="question_border">
+								<div class="w_q">
+									一跳问题1 如何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<!-- 2 -->
+						<div class="write_questions" v-show="inputShow[5].key" @mouseover="enter(5)"
+							@mouseleave="leave(5)">
+							<div class="question_border">
+								<div class="w_q">
+									两跳问题1 是何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[6].key" @mouseover="enter(6)"
+							@mouseleave="leave(6)">
+							<div class="question_border">
+								<div class="w_q">
+									两跳问题1 为何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[7].key" @mouseover="enter(7)"
+							@mouseleave="leave(7)">
+							<div class="question_border">
+								<div class="w_q">
+									两跳问题1 若何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+								
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[8].key" @mouseover="enter(8)"
+							@mouseleave="leave(8)">
+							<div class="question_border">
+								<div class="w_q">
+									两跳问题1 由何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[9].key" @mouseover="enter(9)"
+							@mouseleave="leave(9)">
+							<div class="question_border">
+								<div class="w_q">
+									两跳问题1 如何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<!-- 3 -->
+						<div class="write_questions" v-show="inputShow[10].key" @mouseover="enter(10)"
+							@mouseleave="leave(10)">
+							<div class="question_border">
+								<div class="w_q">
+									三跳问题1 是何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[11].key" @mouseover="enter(11)"
+							@mouseleave="leave(11)">
+							<div class="question_border">
+								<div class="w_q">
+									三跳问题1 为何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[12].key" @mouseover="enter(12)"
+							@mouseleave="leave(12)">
+							<div class="question_border">
+								<div class="w_q">
+									三跳问题1 若何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[13].key" @mouseover="enter(13)"
+							@mouseleave="leave(13)">
+							<div class="question_border">
+								<div class="w_q">
+									三跳问题1 由何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[14].key" @mouseover="enter(14)"
+							@mouseleave="leave(14)">
+							<div class="question_border">
+								<div class="w_q">
+									三跳问题1 如何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<!-- 4 -->
+						<div class="write_questions" v-show="inputShow[15].key" @mouseover="enter(15)"
+							@mouseleave="leave(15)">
+							<div class="question_border">
+								<div class="w_q">
+									四跳问题1 是何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[16].key" @mouseover="enter(16)"
+							@mouseleave="leave(16)">
+							<div class="question_border">
+								<div class="w_q">
+									四跳问题1 为何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[17].key" @mouseover="enter(17)"
+							@mouseleave="leave(17)">
+							<div class="question_border">
+								<div class="w_q">
+									四跳问题1 若何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[18].key" @mouseover="enter(18)"
+							@mouseleave="leave(18)">
+							<div class="question_border">
+								<div class="w_q">
+									四跳问题1 由何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[19].key" @mouseover="enter(19)"
+							@mouseleave="leave(19)">
+							<div class="question_border">
+								<div class="w_q">
+									四跳问题1 如何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<!-- 5 -->
+						<div class="write_questions" v-show="inputShow[20].key" @mouseover="enter(20)"
+							@mouseleave="leave(20)">
+							<div class="question_border">
+								<div class="w_q">
+									五跳问题1 是何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[21].key" @mouseover="enter(21)"
+							@mouseleave="leave(21)">
+							<div class="question_border">
+								<div class="w_q">
+									五跳问题1 为何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[22].key" @mouseover="enter(22)"
+							@mouseleave="leave(22)">
+							<div class="question_border">
+								<div class="w_q">
+									五跳问题1 若何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[23].key" @mouseover="enter(23)"
+							@mouseleave="leave(23)">
+							<div class="question_border">
+								<div class="w_q">
+									五跳问题1 由何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+						<div class="write_questions" v-show="inputShow[24].key" @mouseover="enter(24)"
+							@mouseleave="leave(24)">
+							<div class="question_border">
+								<div class="w_q">
+									五跳问题1 如何类型问题
+								</div>
+								<label>问句
+									<textarea rows="2" cols="10" class="qin" placeholder="输入" style="resize: none;"></textarea>
+								</label>
+							</div>
+							<label>
+								<input type="button" name="add" class="add" value="更新问句" style="color: black;"
+									@click="" />
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<!--提交-->
+		<script src="js/flexible.js"></script>
+		<script src="js/axios.min.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/echarts.min.js"></script>
+		<script src="js/vue.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+		<script src="https://dl.ifanr.cn/hydrogen/sdk/sdk-web-latest.js"></script>
+		<script src="js/QuestionMark.js" charset="utf-8"></script>
+	</body>
+
+</html>
